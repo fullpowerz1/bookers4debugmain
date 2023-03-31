@@ -5,7 +5,7 @@ class BookCommentsController < ApplicationController
     @book_comment = current_user.book_comments.new(book_comment_params)
     @book_comment.book_id = @book.id
     if @book_comment.save
-      redirect_to books_path
+      render :bookcommenter
     else
       @book = Book.find(params[:book_id])
       @user = @book.user
@@ -20,7 +20,7 @@ class BookCommentsController < ApplicationController
     if @book_comment.user == current_user
       BookComment.find(params[:id]).destroy
       @book = Book.find(params[:book_id])
-      redirect_to book_path(@book)
+      render :bookcommenter
     end
   end
 
