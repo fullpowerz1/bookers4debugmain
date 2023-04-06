@@ -11,8 +11,19 @@ import "jquery"
 import "popper.js"
 import "bootstrap"
 import '@fortawesome/fontawesome-free/js/all';
-import "../stylesheets/application" 
+import "../stylesheets/application"
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+require("jquery")
+window.$ = window.jQuery = require('jquery');
+require('packs/raty')
+
+import Raty from "raty.js"
+window.raty = function(elem,opt) {
+  let raty = new Raty(elem,opt)
+  raty.init();
+  return raty;
+}
